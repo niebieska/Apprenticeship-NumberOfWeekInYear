@@ -68,11 +68,13 @@ namespace NumberOfWeekInYear
             {
                 WeekNumber++;
             }
-            
+           
             Console.WriteLine("Numer tygodnia:");
-            Console.Write(WeekNumber);
+            Console.Write(WeekNumber); 
                
         }
+
+       
         public void NumberOfThisWeek(string f)
         {
             DateTime date = DateTime.Now;
@@ -93,14 +95,14 @@ namespace NumberOfWeekInYear
                 {
                     for (int i = 0; i < 7; i++)
                     {
-                        if (a == DaysNames[i]) { substract = i + 1; }
+                        if (a == DaysNames[i]) { substract = i; }
 
                     }
                 }
                 else {
                     for (int i = 0; i < 7; i++)
                     {
-                        if (a == DaysNames2[i]) { substract = i + 1; }
+                        if (a == DaysNames2[i]) { substract = i+1; }
 
                     }
                                 }
@@ -108,7 +110,7 @@ namespace NumberOfWeekInYear
                 return substract;
             }
         }
-
+       
     }
     
     
@@ -118,14 +120,7 @@ namespace NumberOfWeekInYear
         private int month;
         private int year;
         private string firstday;
-
-        /*public Date(int d, int m, int y)
-        {
-            day = d;
-            month = m;
-            year = y;
-        }
-        */
+            
         public void SetFirstDay(string s) 
                 {
                     this.firstday = s;      
