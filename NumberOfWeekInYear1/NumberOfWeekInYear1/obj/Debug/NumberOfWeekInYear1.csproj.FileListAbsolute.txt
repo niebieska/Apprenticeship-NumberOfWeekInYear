@@ -1,0 +1,5 @@
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberOfWeekInYear1\bin\Debug\NumberOfWeekInYear1.exe
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberOfWeekInYear1\bin\Debug\NumberOfWeekInYear1.pdb
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberOfWeekInYear1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberOfWeekInYear1\obj\Debug\NumberOfWeekInYear1.exe
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberOfWeekInYear1\obj\Debug\NumberOfWeekInYear1.pdb

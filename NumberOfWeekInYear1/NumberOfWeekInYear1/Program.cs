@@ -7,9 +7,101 @@ namespace NumberOfWeekInYear
 {
     class Program
     {
+        public int p;
         static void Main(string[] args)
         {
+            Program p = new Program();
+            Date d= new Date();
+
+            int type;
+            d.ChooseFirstDay();
+            Console.WriteLine(" Wybierz rodzaj dzialania: \n 1 numer tygodnia dla aktualnej daty \n 2 numer tygodnia dla wybranej daty");
+            type = int.Parse(Console.ReadLine());
+                          switch (type)
+                {
+                    case 1: p.NumberOfThisWeek(d.FirstDay()); break;
+                    case 2: d.GetDate(); d.WriteDate();  d.IsCorrect(); p.NumberOfWeek(d.Day(),d.Month(),d.Year(),d.FirstDay()); break;
+                    default: Console.WriteLine("Wybrano zly klawisz"); break;
+
+                }
+             Console.ReadLine();
         }
+
+       
+     
+        public void Today(DateTime date) 
+        {
+            Console.WriteLine("Aktualna data:");
+            Console.Write(date);
+            Console.WriteLine();
+        }
+        public void NumberOfWeek(int d, int m, int y, string FirstDay)
+        {
+            //Date dt = new Date();
+            DateTime date = new DateTime(y, m, d);
+            int[] NumberOfDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            int WeekNumber = 0;
+            string ActualDay = date.DayOfWeek.ToString();
+            int Substract = WeekDay(FirstDay, ActualDay);
+            int SumofDays = d - Substract ;
+            
+            for (int i = 0; i < m-1; i++)
+            {
+                SumofDays += NumberOfDays[i];
+                
+            }
+            WeekNumber = SumofDays / 7;
+                      
+            
+            if (SumofDays % 7 > 3)
+            {
+                WeekNumber += 2;
+            }
+            else
+            {
+                WeekNumber++;
+            }
+            
+            Console.WriteLine("Numer tygodnia:");
+            Console.Write(WeekNumber);
+               
+        }
+        public void NumberOfThisWeek(string f)
+        {
+            DateTime date = DateTime.Now;
+            Today(date);
+            NumberOfWeek(date.Day, date.Month, date.Year,f);
+         
+        }
+        public int WeekDay(string f, string a)
+        {    
+            int substract = 0;
+
+            string[] DaysNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            string[] DaysNames2 = { "Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            if (a == f) return 0;
+            else
+            {
+                if (f == "Monday")
+                {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        if (a == DaysNames[i]) { substract = i + 1; }
+
+                    }
+                }
+                else {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        if (a == DaysNames2[i]) { substract = i + 1; }
+
+                    }
+                                }
+
+                return substract;
+            }
+        }
+
     }
     
     
@@ -18,9 +110,49 @@ namespace NumberOfWeekInYear
         private int day;
         private int month;
         private int year;
+        private string firstday;
 
-        public void RepairDate()
+        /*public Date(int d, int m, int y)
         {
+            day = d;
+            month = m;
+            year = y;
+        }
+        */
+        public void SetFirstDay(string s) 
+                {
+                    this.firstday = s;      
+                }
+
+        public void ChooseFirstDay()
+        {   char s;
+            Console.WriteLine("Wybierz pierwszy dzien tygodnia! \n p\t- poniedzialek\t n\t-niedziela");
+            s = char.Parse(Console.ReadLine());
+            switch (s)
+            {
+                case 'p': SetFirstDay("Monday"); break;
+                case 'n':  SetFirstDay("Sunday"); break;
+
+                default: Console.WriteLine("Wybrano zly klawisz"); break;
+            }
+        }
+
+        public void IsCorrect() 
+        {
+            char sign;
+            Console.WriteLine("Korygowac programowo date? \n t - tak \n n - nie");
+            sign = char.Parse(Console.ReadLine());
+            switch (sign)
+            {
+                case 't': RepairDate(); WriteDate(); break;
+                case 'n': break;
+                default: Console.WriteLine("Wybrano zly klawisz"); break;
+
+            }
+                
+        }
+        public void RepairDate()
+        { 
             if (month < 1)
                 month = 1;
             else if (month > 12)
@@ -46,7 +178,7 @@ namespace NumberOfWeekInYear
 
             if (day > DaysOfMonth)
                 day = DaysOfMonth;
-
+            Console.WriteLine("Skorygowana");
         }
         public void SetDate(int d, int m, int y)
         {
@@ -57,7 +189,7 @@ namespace NumberOfWeekInYear
         }
         public void WriteDate()
         {
-            Console.WriteLine("Wprowadzona data:");
+            Console.WriteLine("Data:");
             Console.Write(day); Console.Write('-');
             Console.Write(month); Console.Write('-');
             Console.Write(year); Console.WriteLine();
@@ -65,8 +197,8 @@ namespace NumberOfWeekInYear
         }
         
          public void GetDate()
-        {
-            Console.WriteLine("Podaj date:");
+         {
+            Console.WriteLine("Wpisz date");
             Console.WriteLine("Dzien:");
             this.day = int.Parse(Console.ReadLine());
             Console.WriteLine("Miesiac:");
@@ -76,13 +208,10 @@ namespace NumberOfWeekInYear
             
         }
         
-        
         public int Day() { return day; }
         public int Month() { return month; }
         public int Year() { return year; }
-
-
-
+        public string FirstDay() { return firstday; }
 
     }
 
