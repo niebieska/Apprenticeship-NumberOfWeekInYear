@@ -14,17 +14,24 @@ namespace NumberOfWeekInYear
             Date d= new Date();
 
             int type;
-            d.ChooseFirstDay();
-            Console.WriteLine(" Wybierz rodzaj dzialania: \n 1 numer tygodnia dla aktualnej daty \n 2 numer tygodnia dla wybranej daty");
-            type = int.Parse(Console.ReadLine());
-                          switch (type)
+            int k=1;
+            while (k!=0)
+            {
+                d.ChooseFirstDay();
+                Console.WriteLine(" Wybierz rodzaj dzialania: \n 1 numer tygodnia dla aktualnej daty \n 2 numer tygodnia dla wybranej daty \n 3 wyjscie");
+                type = int.Parse(Console.ReadLine());
+                switch (type)
                 {
                     case 1: p.NumberOfThisWeek(d.FirstDay()); break;
-                    case 2: d.GetDate(); d.WriteDate();  d.IsCorrect(); p.NumberOfWeek(d.Day(),d.Month(),d.Year(),d.FirstDay()); break;
+                    case 2: d.GetDate(); d.WriteDate(); d.IsCorrect(); p.NumberOfWeek(d.Day(), d.Month(), d.Year(), d.FirstDay()); break;
+                    case 3: k = 0; break;
                     default: Console.WriteLine("Wybrano zly klawisz"); break;
 
                 }
-             Console.ReadLine();
+                if (k == 0) break;
+                Console.WriteLine();
+                //Console.ReadLine();
+            }
         }
 
        
