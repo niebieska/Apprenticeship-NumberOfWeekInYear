@@ -19,6 +19,7 @@ namespace NumberOfWeekInYear
             {
                 d.ChooseFirstDay();
                 Console.WriteLine(" Wybierz rodzaj dzialania: \n 1 numer tygodnia dla aktualnej daty \n 2 numer tygodnia dla wybranej daty \n 3 wyjscie");
+                
                 type = int.Parse(Console.ReadLine());
                 switch (type)
                 {
@@ -68,13 +69,39 @@ namespace NumberOfWeekInYear
             {
                 WeekNumber++;
             }
-           
+            
+            if (WeekNumber == 53)
+            {
+                if (LastThursdayInYear(y) < d && (LastThursdayInYear(y)+1)!=31) { WeekNumber--; }
+                       
+            }
+
             Console.WriteLine("Numer tygodnia:");
             Console.Write(WeekNumber); 
                
         }
+        public int LastThursdayInYear(int y)
+        {
+            int LastThursdayNumber=0;
+            int m = 12;
+            for (int i = 1; i <= 31; i++)
+            {
+                if (ActualDayOfWeek(i, m, y) == "Thursday") 
+                {
+                    LastThursdayNumber = i;
+                }
+                    
+            }
+            return LastThursdayNumber; 
+               }
 
-       
+        public string ActualDayOfWeek(int d,int m, int y)
+        {
+            DateTime date = new DateTime(y, m, d);
+            return date.DayOfWeek.ToString();
+
+        }
+      
         public void NumberOfThisWeek(string f)
         {
             DateTime date = DateTime.Now;
@@ -197,7 +224,7 @@ namespace NumberOfWeekInYear
             Console.Write(year); Console.WriteLine();
         
         }
-        
+                
          public void GetDate()
          {
             Console.WriteLine("Wpisz date");

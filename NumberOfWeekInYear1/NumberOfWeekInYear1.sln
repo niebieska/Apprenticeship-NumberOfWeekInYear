@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberOfWeekInYear1", "NumberOfWeekInYear1\NumberOfWeekInYear1.csproj", "{F5EFB616-5169-4C81-9980-79989CE470EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberofWeeks", "NumberofWeeks\NumberofWeeks.csproj", "{4E9E7027-94B7-4152-972C-3ED64737F433}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{F5EFB616-5169-4C81-9980-79989CE470EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5EFB616-5169-4C81-9980-79989CE470EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5EFB616-5169-4C81-9980-79989CE470EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E9E7027-94B7-4152-972C-3ED64737F433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E9E7027-94B7-4152-972C-3ED64737F433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E9E7027-94B7-4152-972C-3ED64737F433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E9E7027-94B7-4152-972C-3ED64737F433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
