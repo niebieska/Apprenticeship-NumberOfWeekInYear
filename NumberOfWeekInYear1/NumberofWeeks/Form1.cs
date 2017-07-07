@@ -51,11 +51,18 @@ namespace NumberofWeeks
 
         private void oProgamieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = " ";
 
         }
     }
@@ -86,7 +93,7 @@ namespace NumberofWeeks
             {
                 WeekNumber++;
             }
-
+            
             if (WeekNumber == 53)
             {
                 if (LastThursdayInYear(date.Year) < date.Day && (LastThursdayInYear(date.Year) + 1) != 31) { WeekNumber--; }
