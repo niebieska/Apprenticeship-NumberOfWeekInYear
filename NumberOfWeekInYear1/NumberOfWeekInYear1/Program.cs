@@ -50,28 +50,35 @@ namespace NumberOfWeekInYear
             Console.Write(date);
             Console.WriteLine();
         }
-        public void NumberOfWeek(int d, int m, int y)
+        public int NumberOfWeek(int d, int m, int y)
         {
             Date dt = new Date();
             DateTime date = new DateTime(y, m, d);
             int feb=28;
-            if (IsLeapYear(y) == 1) { feb = 29; } //Console.Write(feb);
+            if (IsLeapYear(y) == 1) { feb = 29; }
             
             int[] NumberOfDays = { 31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
             
-            float WeekNumber = 0;
+            int WeekNumber = 0;
             int Substract = WeekDay(date.DayOfWeek.ToString());
             int SumofDays = d;
+            
             //Console.WriteLine();
               //          Console.WriteLine("dzien:");
                 //        Console.Write(SumofDays);
             //int SumofDays = d - Substract ;
-            if (FirstWeekOfYear(y, m, d) != 1) { WeekNumber = -1; }
+            if (FirstWeekOfYear(y, m, d) != 1)
+            {
+                WeekNumber = -1;
+                }
+            
             for (int i = 0; i < m-1; i++)
             {
                 SumofDays += NumberOfDays[i];
                 
             }
+             
+          
             /*Console.WriteLine();
             Console.WriteLine("dzien:");
             Console.Write(SumofDays);
@@ -93,13 +100,23 @@ namespace NumberOfWeekInYear
             
             if (WeekNumber == 53)
             {
-                if (LastThursdayInYear(y) < d && (LastThursdayInYear(y) + 1) != 31) { Console.WriteLine("Tydzien jest 1 w nowym roku "); Console.Write(y + 1); WeekNumber=1; }
+                if (LastThursdayInYear(y) < d && (LastThursdayInYear(y) + 1) != 31) { 
+                    Console.WriteLine("Tydzien jest 1 w nowym roku \n");
+                    Console.Write(y + 1);
+                    Console.WriteLine("\n");
+
+                    WeekNumber=1; }
                        
             }
+            if (FirstWeekOfYear(y, m, d) != 1 && m == 1 && d < 4)
+
+            { WeekNumber = FirstWeekOfYear(y, m, d); }
+                
 
             Console.WriteLine("Numer tygodnia:");
-            Console.Write(WeekNumber); 
-               
+            Console.Write(WeekNumber);
+            Console.WriteLine();
+               return WeekNumber;
         }
         public int FirstWeekOfYear(int y , int m, int d)
         {
@@ -109,7 +126,9 @@ namespace NumberOfWeekInYear
             int number=0;
             if (date.DayOfWeek.ToString() == "Friday" || date.DayOfWeek.ToString() == "Saturday" || date.DayOfWeek.ToString() == "Sunday")
             {
-                number=53;
+               number=NumberOfWeek(31, 12, y - 1);
+                Console.WriteLine("/n");
+                Console.WriteLine("%%%%");
             }
             else 
             { 
