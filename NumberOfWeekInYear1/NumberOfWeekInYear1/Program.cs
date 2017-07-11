@@ -55,15 +55,16 @@ namespace NumberOfWeekInYear
             Date dt = new Date();
             DateTime date = new DateTime(y, m, d);
             int feb=28;
-            if (dt.IsLeapYear()==true){feb=28;}
+            if (IsLeapYear(y) == 1) { feb = 29; } //Console.Write(feb);
+            
             int[] NumberOfDays = { 31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
             
             float WeekNumber = 0;
             int Substract = WeekDay(date.DayOfWeek.ToString());
             int SumofDays = d;
-            Console.WriteLine();
-                        Console.WriteLine("dzien:");
-                        Console.Write(SumofDays);
+            //Console.WriteLine();
+              //          Console.WriteLine("dzien:");
+                //        Console.Write(SumofDays);
             //int SumofDays = d - Substract ;
             if (FirstWeekOfYear(y, m, d) != 1) { WeekNumber = -1; }
             for (int i = 0; i < m-1; i++)
@@ -71,19 +72,19 @@ namespace NumberOfWeekInYear
                 SumofDays += NumberOfDays[i];
                 
             }
-            Console.WriteLine();
+            /*Console.WriteLine();
             Console.WriteLine("dzien:");
             Console.Write(SumofDays);
             Console.WriteLine();
             Console.Write(SumofDays/7);
-
-            WeekNumber = SumofDays / 7;
+            */
+            WeekNumber += SumofDays / 7;
 
                       
             
-            /*if (SumofDays % 7 > 3)
+            if (SumofDays % 7 >0)
             {
-                WeekNumber += 2;
+                WeekNumber ++;
             }
             else
             {
@@ -92,9 +93,9 @@ namespace NumberOfWeekInYear
             
             if (WeekNumber == 53)
             {
-                if (LastThursdayInYear(y) < d && (LastThursdayInYear(y)+1)!=31) { WeekNumber--; }
+                if (LastThursdayInYear(y) < d && (LastThursdayInYear(y) + 1) != 31) { Console.WriteLine("Tydzien jest 1 w nowym roku "); Console.Write(y + 1); WeekNumber=1; }
                        
-            }*/
+            }
 
             Console.WriteLine("Numer tygodnia:");
             Console.Write(WeekNumber); 
@@ -138,7 +139,15 @@ namespace NumberOfWeekInYear
             return date.DayOfWeek.ToString();
 
         }
-      
+        public int IsLeapYear(int y)
+        {
+            int i = 0;
+            if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0)
+            {
+                i = 1;
+            }
+            return i;
+        }
         public void NumberOfThisWeek()
         {
             DateTime date = DateTime.Now;
@@ -178,14 +187,14 @@ namespace NumberOfWeekInYear
         private int year;
                     
               
-        public bool IsLeapYear()
+        public int IsLeapYear()
         {
-            bool Is = false;
+            int i = 0;
             if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
             {
-                Is = true;
+                i= 1;
             }
-            return Is;
+            return i;
         }
         
         public void IsCorrect() 
