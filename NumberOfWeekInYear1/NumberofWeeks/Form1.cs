@@ -67,85 +67,105 @@ namespace NumberofWeeks
         }
     }
             
-            public class Count
-    {
-         
-        public int NumberOfWeek(DateTime date)
+            public class Count{
+public int NumberOfWeek(DateTime date)
         {
-            int[] NumberOfDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
             int WeekNumber = 0;
-            int Substract = WeekDay(date.DayOfWeek.ToString());
-            int SumofDays = date.Day - Substract;
+            int SumofDays = date.Day;
+            int feb = 28;
+            if (IsLeapYear(date.Year) == 1) { feb = 29; }
+            int[] NumberOfDays = { 31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+            if (FirstWeekOfYear(date.Year,date.Month,date.Day) != 1)
+            {
+                WeekNumber = -1;
+            }
 
             for (int i = 0; i < date.Month - 1; i++)
             {
                 SumofDays += NumberOfDays[i];
-
             }
-            WeekNumber = SumofDays / 7;
+
+            WeekNumber += SumofDays / 7;
 
 
-            if (SumofDays % 7 > 3)
+            if (SumofDays % 7 > 0)
             {
-                WeekNumber += 2;
+                WeekNumber++;
             }
             else
             {
                 WeekNumber++;
             }
-            
+
             if (WeekNumber == 53)
             {
-                if (LastThursdayInYear(date.Year) < date.Day && (LastThursdayInYear(date.Year) + 1) != 31) { WeekNumber--; }
-
-            }
-            return WeekNumber;
-          
-        }
-        
-        public int LastThursdayInYear(int y)
-        {
-            int LastThursdayNumber = 0;
-            int m = 12;
-            for (int i = 1; i <= 31; i++)
-            {
-                if (ActualDayOfWeek(i, m, y) == "Thursday")
-                {
-                    LastThursdayNumber = i;
+                if (LastThursdayInYear(date.Year) < date.Day && (LastThursdayInYear(date.Year) + 1) != 31)
+                {         
+                    WeekNumber = 1;
                 }
 
             }
-            return LastThursdayNumber;
+            if (FirstWeekOfYear(date.Year,date.Month,date.Day) != 1 && date.Month == 1 && date.Day < 4)
+            {
+                WeekNumber = FirstWeekOfYear(date.Year,date.Month,date.Day);
+            }
+            return WeekNumber;
+        }
+        
+
+
+        
+        public int FirstWeekOfYear(int y , int m, int d)
+        {          
+            DateTime date = new DateTime(y, m, d);  
+            DateTime dt= new DateTime(y-1,12,31);
+            int number=0;
+            if (date.DayOfWeek.ToString() == "Friday" || date.DayOfWeek.ToString() == "Saturday" || date.DayOfWeek.ToString() == "Sunday")
+            {  
+                number=NumberOfWeek(dt);
+            }
+            else
+            { 
+             number=1;
+            }
+            return number;
         }
 
-        public string ActualDayOfWeek(int d, int m, int y)
+        public int LastThursdayInYear(int y)
+        {
+            int LastThursdayNumber=0;
+            int m = 12;
+            for (int i = 1; i <= 31; i++)
+            {
+                if (ActualDayOfWeek(i, m, y) == "Thursday") 
+                {
+                    LastThursdayNumber = i;
+                }                    
+            }
+            return LastThursdayNumber; 
+        }
+
+        public string ActualDayOfWeek(int d,int m, int y)
         {
             DateTime date = new DateTime(y, m, d);
             return date.DayOfWeek.ToString();
 
         }
-
         
-        public int WeekDay(string a)
+        public int IsLeapYear(int y)
         {
-            int substract = 0;
-
-            string[] DaysNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            
-           
-                    for (int i = 0; i < 7; i++)
-                    {
-                        if (a == DaysNames[i]) { substract = i; }
-
-                    }
-                
-            return substract;
+            int i = 0;
+            if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0)
+            {
+                i = 1;
             }
-        
+            return i;
+        }
 
-    }
+           
+        }             }
 
 
 
-}
 
