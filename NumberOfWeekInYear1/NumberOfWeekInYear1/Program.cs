@@ -86,21 +86,10 @@ namespace NumberOfWeekInYear
                 WeekNumber = FirstWeekOfYear(y, m, d);
                 Console.WriteLine("\n Tydzien nalezy do poprzedniego roku: " + (y - 1)+ "\n");
             }
-            //BreakWithStars();
             Console.WriteLine(" Numer tygodnia: "+ WeekNumber);
             Console.WriteLine();
         }
-        /*public void BreakWithStars()
-        { string s="**";
-            for (int i = 1; i < 30; i++) 
-            {
-                s += "**";
-            }
-            Console.WriteLine("\n");
-            Console.WriteLine(s);
-            Console.WriteLine("\n");
-        
-        }*/
+       
         public int NumberOfWeekInt(int d, int m, int y)
         {
             Date dt = new Date();
@@ -202,26 +191,7 @@ namespace NumberOfWeekInYear
             DateTime date = DateTime.Now;
             Today(date);
             NumberOfWeek(date.Day, date.Month, date.Year);         
-        }
-
-        /*public int WeekDay(string a)
-        {
-            int substract = 0;
-            string[] DaysNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            if (a =="Monday") return 0;
-            else
-            {
-                for (int i = 0; i < 7; i++)
-                    {
-                        if (a == DaysNames[i]) 
-                        {
-                        substract = i; 
-                        }
-                    }
-             }
-            return substract;
-        }*/
-        
+        }             
     }
        
     
