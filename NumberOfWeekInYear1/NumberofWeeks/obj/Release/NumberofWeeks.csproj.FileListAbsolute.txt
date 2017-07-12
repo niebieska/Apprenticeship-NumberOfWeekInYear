@@ -1,0 +1,9 @@
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\bin\Release\NumberofWeeks.exe
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\bin\Release\NumberofWeeks.pdb
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\obj\Release\ResolveAssemblyReference.cache
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\obj\Release\NumberofWeeks.Form1.resources
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\obj\Release\NumberofWeeks.Form2.resources
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\obj\Release\NumberofWeeks.Properties.Resources.resources
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\obj\Release\NumberofWeeks.csproj.GenerateResource.Cache
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\obj\Release\NumberofWeeks.exe
+C:\Users\praktykant\Documents\Visual Studio 2008\Projects\Intership\NumberOfWeekInYear1\NumberofWeeks\obj\Release\NumberofWeeks.pdb
