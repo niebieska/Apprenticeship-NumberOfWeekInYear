@@ -31,7 +31,7 @@ namespace NumberofWeeks
             Count c = new Count();
             c.NumberOfWeek(iDate);
 
-            textBox1.Text = c.NumberOfWeek(iDate) + ' ' + "Numer tygodnia w roku: " + c.NumberOfWeekInt(iDate).ToString();
+            textBox1.Text = c.NumberOfWeek(iDate);
             //textBox1.Text = c.NumberOfWeek(iDate);
         }
 
@@ -61,16 +61,17 @@ namespace NumberofWeeks
     {
         public string NumberOfWeek(DateTime date)
         {
-            string result2=" ";
+            string result=" ", result2=" ";
             int WeekNumber = 0;
             int SumofDays = date.Day;
             int feb = 28;
+            int jan = 31 - NumberofDaysInFirstWeek(date.Year);
             if (IsLeapYear(date.Year) == 1) { feb = 29; }
-            int[] NumberOfDays = { 31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            int[] NumberOfDays = { jan, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-            if (FirstWeekOfYear(date.Year, date.Month, date.Day) != 1)
+            if (FirstWeekOfYear(date.Year, 1, 1) == 1&& date.Month!=1)
             {
-                WeekNumber = -1;
+                WeekNumber++;
             }
 
             for (int i = 0; i < date.Month - 1; i++)
@@ -85,10 +86,7 @@ namespace NumberofWeeks
             {
                 WeekNumber++;
             }
-            else
-            {
-                WeekNumber++;
-            }
+            
 
             if (WeekNumber == 53)
             {
@@ -99,13 +97,33 @@ namespace NumberofWeeks
                 }
 
             }
-            if (FirstWeekOfYear(date.Year, date.Month, date.Day) != 1 && date.Month == 1 && date.Day < 4)
+            if (FirstWeekOfYear(date.Year, 1, 1) != 1 && date.Month == 1 && date.Day < 4)
             {
-                WeekNumber = FirstWeekOfYear(date.Year, date.Month, date.Day);
+                WeekNumber = FirstWeekOfYear(date.Year, 1, 1);
                 result2 +=  "\n Tydzien nalezy do poprzedniego roku: " + (date.Year - 1);
             }
-            
-            return result2;
+            result = " " + WeekNumber;
+            return result2+ "Numer tygodnia w roku: " + result;
+        }
+
+        public int NumberofDaysInFirstWeek(int y)
+        {
+            int DaysInFirstWeek = 0;
+
+            DateTime date = new DateTime(y, 1, 1);
+            int FDay = (int)date.DayOfWeek;
+
+            switch (FDay)
+            {
+                case 0: DaysInFirstWeek = 1; break;
+                case 1: DaysInFirstWeek = 7; break;
+                case 2: DaysInFirstWeek = 6; break;
+                case 3: DaysInFirstWeek = 5; break;
+                case 4: DaysInFirstWeek = 4; break;
+                case 5: DaysInFirstWeek = 3; break;
+                default: DaysInFirstWeek = 2; break;
+            }
+            return DaysInFirstWeek;
         }
 
         public int NumberOfWeekInt(DateTime date)
@@ -116,7 +134,7 @@ namespace NumberofWeeks
             if (IsLeapYear(date.Year) == 1) { feb = 29; }
             int[] NumberOfDays = { 31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-            if (FirstWeekOfYear(date.Year, date.Month, date.Day) != 1)
+            if (FirstWeekOfYear(date.Year, 1, 1) != 1)
             {
                 WeekNumber = -1;
             }
@@ -148,7 +166,7 @@ namespace NumberofWeeks
             }
             if (FirstWeekOfYear(date.Year, date.Month, date.Day) != 1 && date.Month == 1 && date.Day < 4)
             {
-                WeekNumber = FirstWeekOfYear(date.Year, date.Month, date.Day);
+                WeekNumber = FirstWeekOfYear(date.Year, 1, 1);
             }
             return WeekNumber;
         }
