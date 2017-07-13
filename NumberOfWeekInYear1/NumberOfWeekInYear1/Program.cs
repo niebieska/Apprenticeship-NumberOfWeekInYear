@@ -9,16 +9,23 @@ namespace NumberOfWeekInYear
     {
         public int p;
         public static void Main(string[] args)
-        {   
+        {
+            DateTime dt = new DateTime(2003, 5, 1);
+            Console.Write((int)dt.DayOfWeek);
+            
+            //Console.WriteLine("The day of the week for {0:d} is {1}.", dt, dt.DayOfWeek);
+            
+            
             Program p = new Program();
             Date d= new Date();
             int type;
             int k=1;
-            /*int[] tab = { 1,31,15,17,28};
+            int[] tab = { 1,31,15,17,28};
             int[] tab2={1,12,2,8,3};
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                d.SetDate(tab[i], tab2[i], 2011);
+                d.SetDate(tab[i], tab2[i], 2001);
+                //Console.WriteLine( p.FirstWeekOfYear(d.Year(), d.Month(), d.Day()));
                 d.WriteDate();
                 
                 for (int w = 0; w < 8 ; w++)
@@ -28,8 +35,8 @@ namespace NumberOfWeekInYear
                     p.NumberOfWeek(d.Day(), d.Month(), (d.Year()+w));
                     
                 }
-            }*/
-
+            }
+            
             while (k != 0)
             {
                 Console.WriteLine(" Wybierz rodzaj dzialania: \n 1 numer tygodnia dla aktualnej daty \n 2 numer tygodnia dla wybranej daty \n 3 wyjscie");
@@ -38,7 +45,13 @@ namespace NumberOfWeekInYear
                 switch (type)
                 {
                     case 1: p.NumberOfThisWeek(); break;
-                    case 2: d.GetDate(); d.WriteDate(); /*p.BreakWithStars();*/ d.IsCorrect(); p.NumberOfWeek(d.Day(), d.Month(), d.Year()); break;
+                    case 2: 
+                        d.GetDate(); 
+                        d.WriteDate(); 
+                        /*p.BreakWithStars();*/ 
+                        d.IsCorrect(); 
+                        p.NumberOfWeek(d.Day(), d.Month(), d.Year()); 
+                    break;
                     case 3: k = 0; break;
                     default: Console.WriteLine("Wybrano zly klawisz"); break;
                 }
@@ -64,19 +77,22 @@ namespace NumberOfWeekInYear
             if (IsLeapYear(y) == 1) { feb = 29; }
             int[] NumberOfDays = { 31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
             
-            if (FirstWeekOfYear(y, m, d) != 1)
+            if (FirstWeekOfYear(y, 1, 1) != 1)
             {
-                WeekNumber = -1;
+                Console.WriteLine("FirstWeekOfYear(y, m, d): " + FirstWeekOfYear(y, 1, 1) + "\n");
+                Console.WriteLine("Jestem tu!!");
+                WeekNumber --;
             }
-            //Console.WriteLine("W " + WeekNumber);
+            Console.WriteLine("FirstWeekOfYear(y, m, d): " + FirstWeekOfYear(y, m, d)+ "\n");
+            Console.WriteLine("WeekNumber: " + WeekNumber +"\n");
             for (int i = 0; i < m-1; i++)
             {
                 SumofDays += NumberOfDays[i];           
             }
-            //Console.WriteLine("suma dni " +SumofDays);
+            Console.WriteLine("suma dni: " + SumofDays + "\n");
 
             WeekNumber += SumofDays / 7;
-            //Console.WriteLine("s/7 "+WeekNumber);                    
+            Console.WriteLine("s/7 " + WeekNumber + "\n");                    
             
             if (SumofDays % 7 >0)
             {
@@ -97,9 +113,9 @@ namespace NumberOfWeekInYear
                 }
                        
             }
-            if (FirstWeekOfYear(y, m, d) != 1 && m == 1 && d < 4)
+            if (FirstWeekOfYear(y, 1, 1) != 1 && m == 1 && d < 4)
             { 
-                WeekNumber = FirstWeekOfYear(y, m, d);
+                WeekNumber = FirstWeekOfYear(y, 1, 1);
                 Console.WriteLine("\n Tydzien nalezy do poprzedniego roku: " + (y - 1)+ "\n");
             }
             Console.WriteLine(" Numer tygodnia: "+ WeekNumber);
@@ -115,11 +131,10 @@ namespace NumberOfWeekInYear
             int feb = 28;
             if (IsLeapYear(y) == 1) { feb = 29; }
             int[] NumberOfDays = { 31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-           // Console.WriteLine(FirstWeekOfYear(y, m, d));
-            if ((FirstWeekOfYear(y, m, d) )!= 1)
+           
+            if ((FirstWeekOfYear(y, 1, 1) )!= 1)
             {
-                WeekNumber = -1;
-            }
+                WeekNumber--;            }
 
             for (int i = 0; i < m - 1; i++)
             {
@@ -146,9 +161,9 @@ namespace NumberOfWeekInYear
                 }
 
             }
-            if (FirstWeekOfYear(y, m, d) != 1 && m == 1 && d < 4)
+            if (FirstWeekOfYear(y,1, 1) != 1 && m == 1 && d < 4)
             {
-                WeekNumber = FirstWeekOfYear(y, m, d);
+                WeekNumber = FirstWeekOfYear(y, 1, 1);
             }
             return WeekNumber;
         }
