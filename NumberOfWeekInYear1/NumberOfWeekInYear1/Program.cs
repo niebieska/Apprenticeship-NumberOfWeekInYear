@@ -14,24 +14,7 @@ namespace NumberOfWeekInYear
             Date d= new Date();
             int type;
             int k=1;
-                       // Testy:
-            int[] tab = { 1,31,15,17,28};
-            int[] tab2={1,12,2,8,3};
-            for (int i = 0; i < 5; i++)
-            {
-                d.SetDate(tab[i], tab2[i], 2010);
-                d.WriteDate();
-                
-                for (int w = 0; w < 8 ; w++)
-                {   
-                    Console.WriteLine((d.Year()+w) +"-"+ d.Month()+ "-" +d.Day());
-                    
-                    p.NumberOfWeek(d.Day(), d.Month(), (d.Year()+w));
-                    
-                }
-            }
-            //Koniec testów
-
+                       
             while (k != 0)
             {
                 Console.WriteLine(" Wybierz rodzaj dzialania: \n 1 numer tygodnia dla aktualnej daty \n 2 numer tygodnia dla wybranej daty \n 3 wyjscie");
