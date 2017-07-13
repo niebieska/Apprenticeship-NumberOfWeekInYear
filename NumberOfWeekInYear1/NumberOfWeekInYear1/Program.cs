@@ -14,17 +14,12 @@ namespace NumberOfWeekInYear
             Date d= new Date();
             int type;
             int k=1;
-           // DateTime dt = new DateTime(2017, 7, 30);
-    //Console.WriteLine( (int) dt.DayOfWeek);
-    //Console.WriteLine("The day of the week for {0:d} is {1}.", dt, dt.DayOfWeek);
-    
-            // Testy:
+                       // Testy:
             int[] tab = { 1,31,15,17,28};
             int[] tab2={1,12,2,8,3};
             for (int i = 0; i < 5; i++)
             {
-                d.SetDate(tab[i], tab2[i], 2001);
-                //Console.WriteLine( p.FirstWeekOfYear(d.Year(), d.Month(), d.Day()));
+                d.SetDate(tab[i], tab2[i], 2010);
                 d.WriteDate();
                 
                 for (int w = 0; w < 8 ; w++)
@@ -68,44 +63,29 @@ namespace NumberOfWeekInYear
         }
         public void NumberOfWeek(int d, int m, int y)
         {
-            //Date dt = new Date();
             DateTime date = new DateTime(y, m, d);
             int WeekNumber = 0;
             int SumofDays = d;
             int feb = 28;
             int jan = 31 - NumberofDaysInFirstWeek(y);
-            //Console.WriteLine("NumberofDaysInFirstWeek(y)" + NumberofDaysInFirstWeek(y));
+            
             if (IsLeapYear(y) == 1) { feb = 29; }
             int[] NumberOfDays = { jan, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
             if (FirstWeekOfYear(y, 1, 1) == 1 && m!=1)
             {
-                //Console.WriteLine("FirstWeekOfYear(y, m, d): " + FirstWeekOfYear(y, 1, 1) + "\n");
-                //Console.WriteLine("Jestem tu!!");
-                WeekNumber++;
+               WeekNumber++;
             }
             
-            
-            
-            //Console.WriteLine("FirstWeekOfYear(y, m, d): " + FirstWeekOfYear(y, m, d)+ "\n");
-            //Console.WriteLine("WeekNumber: " + WeekNumber +"\n");
-
             for (int i = 0; i < m - 1; i++)
             {               
                     SumofDays += NumberOfDays[i];
                
             }
            
-
-            //Console.WriteLine("suma dni: " + SumofDays + "\n");
-
             WeekNumber += SumofDays / 7;
 
-            //Console.WriteLine("s/7 " + SumofDays / 7 + "\n");
-            //Console.WriteLine("s%7 " + SumofDays % 7 + "\n");
-            //Console.WriteLine("WeekNumber: " + WeekNumber + "\n");
-
-            if (SumofDays % 7 > 0)
+           if (SumofDays % 7 > 0)
             {
                 WeekNumber++;
             }
@@ -194,7 +174,6 @@ switch(FDay)
                 case 5: DaysInFirstWeek = 3; break;
                 default: DaysInFirstWeek = 2; break;
             }
-            //DaysInFirstWeek = ((int)DayOfWeek.Saturday - (int)date.DayOfWeek) + 1;
             return DaysInFirstWeek;
 
 
